@@ -13,6 +13,8 @@ const Product = () => {
   const [sort , setSort] = useState("asc");
   const [brand, setBrand] = useState("")
   const [category, setCategory] = useState("")
+  const [uniqueBrand, setUniqueBrand] = useState([]);
+  const [uniqueCategory, setUniqueCategory] = useState([]);
 
   // console.log(search, sort, brand, category)
 
@@ -20,9 +22,11 @@ const Product = () => {
   useEffect(() => {
     setLoading(true);
     const fetch = async () => {
-      axios.get(`http://localhost:5000/all-product?title=${search}&=sort${sort}&=brand${brand}&=category${category}`).then((res) => {
+      axios.get(`http://localhost:5000/all-product?title=${search}&sort=${sort}&brand=${brand}&category=${category}`).then((res) => {
         console.log(res.data);
-        // setProduct(res.data);
+        setProduct(res.data.products);
+        setUniqueBrand(res.data.brands);
+        setUniqueCategory(res.data.categories);
         setLoading(false);
       });
     };
@@ -59,6 +63,8 @@ const Product = () => {
           <FilterBar 
           setCategory={setCategory}
           setBrand={setBrand}
+          uniqueBrand={uniqueBrand}
+          uniqueCategory={uniqueCategory}
           handleReset={handleReset}
           ></FilterBar>
         </div>

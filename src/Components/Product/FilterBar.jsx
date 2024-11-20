@@ -1,7 +1,8 @@
+/* eslint-disable react/prop-types */
 import { RiFilter2Line } from "react-icons/ri";
 import { RxReset } from "react-icons/rx";
 
-const FilterBar = ({setCategory, setBrand, handleReset}) => {
+const FilterBar = ({setCategory, setBrand, handleReset, uniqueBrand, uniqueCategory}) => {
   return (
     <div className="bg-gray-200 h-screen p-4">
       <div className="flex gap-1 items-center text-2xl font-semibold">
@@ -13,24 +14,26 @@ const FilterBar = ({setCategory, setBrand, handleReset}) => {
           <select
           onChange={(e) =>setBrand(e.target.value)}
           className="p-[11px] w-full border border-black rounded-md">
-            <option disabled selected>
-              Brand
-            </option>
-            <option>Brand1</option>
-            <option>Brand2</option>
-            <option>Brand3</option>
+            
+            <option value="">Brands</option>
+            {
+              uniqueBrand.map((brand, index) =>(
+                <option key={index} value={brand}>{brand}</option>
+              ))
+            }
           </select>
         </div>
         <div className="w-full">
           <select
           onChange={(e) =>setCategory(e.target.value)}
           className="p-[11px] w-full border border-black rounded-md">
-            <option disabled selected>
-              Category
-            </option>
-            <option>Category1</option>
-            <option>Category2</option>
-            <option>Category3</option>
+            
+            <option value="">Categories</option>
+            {
+              uniqueCategory.map((category, index) =>(
+                <option key={index} value={category}>{category}</option>
+              ))
+            }
           </select>
         </div>
       </div>
