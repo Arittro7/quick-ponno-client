@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import useAuth from "../Hooks/useAuth";
 import UserDropdown from "./UserDropdown";
+import logo from "../assets/logo.png"
 
 const Navbar = () => {
 
@@ -41,7 +42,9 @@ const Navbar = () => {
             {navLinks}
           </ul>
         </div>
-        <a className="text-4xl font-bold px-4">Gadget<span className="text-green-600">Shop</span></a>
+        <div className="flex items-center">
+        <img className="w-20" src={logo} alt="" />
+        </div>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
