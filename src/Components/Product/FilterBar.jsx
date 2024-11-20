@@ -1,7 +1,7 @@
 import { RiFilter2Line } from "react-icons/ri";
 import { RxReset } from "react-icons/rx";
 
-const FilterBar = ({setCategory, setBrand}) => {
+const FilterBar = ({setCategory, setBrand, handleReset}) => {
   return (
     <div className="bg-gray-200 h-screen p-4">
       <div className="flex gap-1 items-center text-2xl font-semibold">
@@ -16,9 +16,9 @@ const FilterBar = ({setCategory, setBrand}) => {
             <option disabled selected>
               Brand
             </option>
-            <option>Dynamic1</option>
-            <option>Dynamic2</option>
-            <option>Dynamic3</option>
+            <option>Brand1</option>
+            <option>Brand2</option>
+            <option>Brand3</option>
           </select>
         </div>
         <div className="w-full">
@@ -28,13 +28,15 @@ const FilterBar = ({setCategory, setBrand}) => {
             <option disabled selected>
               Category
             </option>
-            <option>Dynamic1</option>
-            <option>Dynamic2</option>
-            <option>Dynamic3</option>
+            <option>Category1</option>
+            <option>Category2</option>
+            <option>Category3</option>
           </select>
         </div>
       </div>
-      <button className="mt-4 btn btn-outline w-full uppercase">
+      <button
+      onClick={handleReset}
+      className="mt-4 btn btn-outline w-full uppercase">
         <p>Reset</p>
         <RxReset></RxReset>
       </button>

@@ -14,26 +14,35 @@ const Product = () => {
   const [brand, setBrand] = useState("")
   const [category, setCategory] = useState("")
 
-  // console.log(search);
-  // console.log(sort);
-  console.log(brand);
-  console.log(category);
+  // console.log(search, sort, brand, category)
+
+
   useEffect(() => {
     setLoading(true);
     const fetch = async () => {
-      axios.get(`http://localhost:5000/all-product`).then((res) => {
-        // console.log(res.data);
-        setProduct(res.data);
+      axios.get(`http://localhost:5000/all-product?title=${search}&=sort${sort}&=brand${brand}&=category${category}`).then((res) => {
+        console.log(res.data);
+        // setProduct(res.data);
         setLoading(false);
       });
     };
     fetch();
-  }, []);
+  }, [brand, category, search, sort]);
 
+  // Search product
   const handleSearch = e =>{
     e.preventDefault()
     setSearch(e.target.search.value)
     e.target.search.value = "";
+  }
+
+  // reset brand & Category 
+  const handleReset = () =>{
+    setBrand("");
+    setSearch("");
+    setCategory("");
+    setSort('asc');
+    window.location.reload()
   }
 
   return (
@@ -50,6 +59,7 @@ const Product = () => {
           <FilterBar 
           setCategory={setCategory}
           setBrand={setBrand}
+          handleReset={handleReset}
           ></FilterBar>
         </div>
         <div className="col-span-10">
