@@ -2,7 +2,7 @@
 const ProductCard = ({product}) => {
   return (
     <div>
-      <div className="border border-1 p-2 border-gray-500 shadow-md">
+      <div className="border-2  p-2 border-gray-500 shadow-md">
         <figure>
           <img className="h-[300px] w-full object-cover p-4"
             src={product?.image}

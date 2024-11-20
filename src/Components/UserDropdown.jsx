@@ -1,18 +1,21 @@
 import { NavLink } from "react-router-dom";
 import useAuth from "../Hooks/useAuth";
+import userImg from "../assets/user.png"
 
 const UserDropdown = () => {
   const {user, Logout} = useAuth()
   const handleLogout = () => {
     Logout()
   }
+  console.log(user);
   return (
     <div>
       <div className="dropdown dropdown-bottom dropdown-end">
         <div tabIndex={0} role="button" className="btn m-1">
           <div className="avatar">
             <div className="w-12 rounded-full ring ring-offset-2">
-              <img src={`${user?.photoURL || "../assets/user.png" }`} />
+              <img src={user?.photoURL ? user.photoURL : userImg} alt="User Profile Picture" 
+              className="p-1"/>
             </div>
           </div>
         </div>
