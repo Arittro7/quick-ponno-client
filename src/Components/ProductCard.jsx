@@ -8,7 +8,10 @@ const ProductCard = ({product}) => {
   // console.log(userEmail);
 
   const handleWishlist = async () =>{
-    await axios.post("http://localhost:5000/wishlist/add", {userEmail,productId: product._id}).then(res => console.log(res.data))
+    await axios.patch("http://localhost:5000/wishlist/add", 
+      {userEmail: userEmail,
+      productId: product._id})
+        .then(res => console.log(res.data))
   }
 
   return (
