@@ -19,9 +19,9 @@ const ProductCard = ({product}) => {
           <h1> Price: ${product?.price}</h1>
           <h1> Stock: {product?.stock}</h1>
           </div>
-          <h1>{product?.description.length <50
+          <h1>{product?.description.length <40
           ? `${product?.description}` :
-          `${product?.description.substring(0, 50)}...`
+          `${product?.description.substring(0, 40)}...`
           // or `${product.description.slice(0, 50)}...`
           }</h1>
         </div>

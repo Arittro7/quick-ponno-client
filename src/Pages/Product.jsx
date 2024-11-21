@@ -5,6 +5,7 @@ import SortByPrice from "../Components/Product/SortByPrice";
 import axios from "axios";
 import Loading from "./Loading";
 import ProductCard from "../Components/ProductCard";
+import { FaRegArrowAltCircleLeft, FaRegArrowAltCircleRight } from "react-icons/fa";
 
 const Product = () => {
   const [products, setProduct] = useState([]);
@@ -15,6 +16,9 @@ const Product = () => {
   const [category, setCategory] = useState("")
   const [uniqueBrand, setUniqueBrand] = useState([]);
   const [uniqueCategory, setUniqueCategory] = useState([]);
+  const [page, setPage] = useState(1);
+  const [ totalPages, setTotalPages] = useState(1);
+
 
   // console.log(search, sort, brand, category)
 
@@ -22,16 +26,17 @@ const Product = () => {
   useEffect(() => {
     setLoading(true);
     const fetch = async () => {
-      axios.get(`http://localhost:5000/all-product?title=${search}&sort=${sort}&brand=${brand}&category=${category}`).then((res) => {
+      axios.get(`http://localhost:5000/all-product?title=${search}&page=${page}&limit=${9}&sort=${sort}&brand=${brand}&category=${category}`).then((res) => {
         console.log(res.data);
         setProduct(res.data.products);
         setUniqueBrand(res.data.brands);
         setUniqueCategory(res.data.categories);
+        setTotalPages(Math.ceil(res.data.totalProducts/9))
         setLoading(false);
       });
     };
     fetch();
-  }, [brand, category, search, sort]);
+  }, [brand, category, search, sort, page]);
 
   // Search product
   const handleSearch = e =>{
@@ -47,6 +52,13 @@ const Product = () => {
     setCategory("");
     setSort('asc');
     window.location.reload()
+  }
+
+  const handlePageChange = (newPage) =>{
+    if(newPage>0 && newPage <= totalPages){
+      setPage(newPage)
+      window.scrollTo({top:0, behavior:'smooth'})
+    }
   }
 
   return (
@@ -82,6 +94,16 @@ const Product = () => {
               ))}
             </div>
           )}
+          {/* Pagination */}
+        <div className="flex justify-center items-center gap-2 my-8">
+          <button onClick={() => handlePageChange(page - 1)}>
+            <FaRegArrowAltCircleLeft/>
+          </button>
+          <p>Page {page} of {totalPages}</p>
+          <button onClick={() => handlePageChange(page + 1)}>
+            <FaRegArrowAltCircleRight/>
+          </button>
+        </div>
         </div>
       </div>
     </div>
