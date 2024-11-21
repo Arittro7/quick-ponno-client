@@ -1,5 +1,16 @@
+import axios from "axios";
+import useUserData from "../Hooks/useUserData";
+
 /* eslint-disable react/prop-types */
 const ProductCard = ({product}) => {
+  const userData = useUserData()
+  const userEmail = userData.email
+  // console.log(userEmail);
+
+  const handleWishlist = async () =>{
+    await axios.post("http://localhost:5000/wishlist/add", {userEmail,productId: product._id}).then(res => console.log(res.data))
+  }
+
   return (
     <div>
       <div className="border-2  p-2 border-gray-500 shadow-md">
@@ -26,7 +37,9 @@ const ProductCard = ({product}) => {
           }</h1>
         </div>
         <div className="btn btn-outline flex justify-center">
-          <button className="uppercase font-semibold">Add to Wishlist</button>
+          <button 
+          onClick={handleWishlist}
+          className="uppercase font-semibold">Add to Wishlist</button>
         </div>
       </div>
     </div>

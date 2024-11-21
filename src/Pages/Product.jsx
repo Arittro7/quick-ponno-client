@@ -96,11 +96,17 @@ const Product = () => {
           )}
           {/* Pagination */}
         <div className="flex justify-center items-center gap-2 my-8">
-          <button onClick={() => handlePageChange(page - 1)}>
-            <FaRegArrowAltCircleLeft/>
+          <button onClick={() => handlePageChange(page - 1)}
+            className="btn btn-outline rounded-full"
+            disabled={page === 1}
+            >
+            <FaRegArrowAltCircleLeft />
           </button>
           <p>Page {page} of {totalPages}</p>
-          <button onClick={() => handlePageChange(page + 1)}>
+          <button onClick={() => handlePageChange(page + 1)}
+            className="btn btn-outline rounded-full"
+            disabled={page === totalPages}
+            >
             <FaRegArrowAltCircleRight/>
           </button>
         </div>

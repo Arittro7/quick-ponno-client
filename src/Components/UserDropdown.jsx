@@ -12,7 +12,7 @@ const UserDropdown = () => {
       <div className="dropdown dropdown-bottom dropdown-end">
         <div tabIndex={0} role="button" className="btn m-1">
           <div className="avatar">
-            <div className="w-12 rounded-full ring ring-offset-2">
+            <div className="w-12  rounded-full ring ring-offset-2">
               <img src={user?.photoURL ? user.photoURL : userImg} 
               className="p-1"/>
             </div>
