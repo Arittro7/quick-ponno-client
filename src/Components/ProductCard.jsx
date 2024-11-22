@@ -1,5 +1,6 @@
 import axios from "axios";
 import useUserData from "../Hooks/useUserData";
+import Swal from "sweetalert2";
 
 /* eslint-disable react/prop-types */
 const ProductCard = ({product}) => {
@@ -10,8 +11,18 @@ const ProductCard = ({product}) => {
   const handleWishlist = async () =>{
     await axios.patch("http://localhost:5000/wishlist/add", 
       {userEmail: userEmail,
-      productId: product._id})
-        .then(res => console.log(res.data))
+        productId: product._id})
+        .then((res) => {
+         if (res.data.acknowledged){
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "Product Added to Wishlist",
+            showConfirmButton: false,
+            timer: 1500
+          });
+         }
+        })
   }
 
   return (
