@@ -1,6 +1,15 @@
 import { NavLink } from "react-router-dom";
 import useUserData from "../../Hooks/useUserData";
 import useAuth from "../../Hooks/useAuth";
+import logo from "../../assets/logo.png"
+
+const buyerRoutes = [
+  {
+    id: 1,
+    route: "/dashboard/wishlist",
+    title: "Wishlist",
+  },
+];
 
 const sellerRoutes = [
   {
@@ -18,25 +27,41 @@ const sellerRoutes = [
 const Sidebar = () => {
   const userData = useUserData();
   // console.log(userData);
-  const {Logout} = useAuth()
+  const { Logout } = useAuth();
   return (
-    <div className="bg-blue-200 border-r-2 border-green-800 min-h-screen">
+    <div className="bg-emerald-400 border-r-2 border-green-800 min-h-screen">
+      
+        <img
+        className="w-24 mx-auto " 
+        src={logo} alt="" />
+        
       <ul className="flex flex-col gap-2 p-4">
-        <li>
+        <li className="btn btn-outline mt-8">
           <NavLink to="/dashboard/overview">Overview</NavLink>
         </li>
         {userData.role === "seller" &&
           sellerRoutes.map((route) => (
-            <li key={route.id}>
-              <NavLink to={route.route}>
-                {route.title}
-              </NavLink>
+            <li
+            className="btn btn-outline"
+            key={route.id}>
+              <NavLink to={route.route}>{route.title}</NavLink>
             </li>
           ))}
-        <li>
+
+          {/* Buyer Components  */}
+        {userData.role === "buyer" &&
+          buyerRoutes.map((route) => (
+            <li
+            className="btn btn-outline" 
+            key={route.id}>
+              <NavLink to={route.route}>{route.title}</NavLink>
+            </li>
+          ))}
+
+        <li className="btn btn-outline">
           <NavLink to="/">Home</NavLink>
         </li>
-        <li>
+        <li className="btn btn-outline">
           <button onClick={Logout}>Logout</button>
         </li>
       </ul>
