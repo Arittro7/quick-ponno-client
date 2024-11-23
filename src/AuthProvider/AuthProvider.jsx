@@ -45,7 +45,7 @@ const AuthProvider = ({ children }) => {
       setUser(currentUser);
       if (currentUser) {
         axios
-          .post(`http://localhost:5000/authentication`, {
+          .post(`https://quick-ponno-server.vercel.app/authentication`, {
             email: currentUser.email,
           })
           .then((data) => {

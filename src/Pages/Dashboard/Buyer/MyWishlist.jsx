@@ -13,7 +13,7 @@ const MyWishlist = () => {
   useEffect(() => {
     const fetchWishlist = async () => {
       await axios
-        .get(`http://localhost:5000/wishlist/${userData._id}`, {
+        .get(`https://quick-ponno-server.vercel.app/wishlist/${userData._id}`, {
           headers: {
             authorization: `Bearer ${token}`,
           },

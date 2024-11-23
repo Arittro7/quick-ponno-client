@@ -10,7 +10,7 @@ const ProductCard = ({ product, isInWishlist }) => {
 
   const handleWishlist = async () => {
     await axios
-      .patch("http://localhost:5000/wishlist/add", {
+      .patch("https://quick-ponno-server.vercel.app/wishlist/add", {
         userEmail: userEmail,
         productId: product._id,
       })

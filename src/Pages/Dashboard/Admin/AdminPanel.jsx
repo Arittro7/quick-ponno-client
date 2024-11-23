@@ -13,11 +13,14 @@ const AdminPanel = () => {
     const fetchUsers = async () => {
       setLoading(true);
       try {
-        const response = await axios.get("http://localhost:5000/users", {
-          headers: {
-            authorization: `Bearer ${token}`,
-          },
-        });
+        const response = await axios.get(
+          "https://quick-ponno-server.vercel.app/users",
+          {
+            headers: {
+              authorization: `Bearer ${token}`,
+            },
+          }
+        );
         setUsers(response.data);
       } catch (error) {
         setError(error.message);
@@ -31,7 +34,7 @@ const AdminPanel = () => {
   const promoteToSeller = async (email) => {
     try {
       const response = await axios.patch(
-        "http://localhost:5000/user/promote",
+        "https://quick-ponno-server.vercel.app/user/promote",
         { email },
         {
           headers: {
@@ -54,12 +57,15 @@ const AdminPanel = () => {
 
   const deleteSeller = async (email) => {
     try {
-      const response = await axios.delete("http://localhost:5000/user/delete", {
-        headers: {
-          authorization: `Bearer ${token}`,
-        },
-        data: { email },
-      });
+      const response = await axios.delete(
+        "https://quick-ponno-server.vercel.app/user/delete",
+        {
+          headers: {
+            authorization: `Bearer ${token}`,
+          },
+          data: { email },
+        }
+      );
       if (response.data.deletedCount > 0) {
         Swal.fire("Deleted!", "Seller has been removed", "success");
         setUsers((prev) => prev.filter((user) => user.email !== email));

@@ -37,7 +37,7 @@ const AddProducts = () => {
     const token = localStorage.getItem("access-token");
 
     axios
-      .post("http://localhost:5000/addProduct", product, {
+      .post("https://quick-ponno-server.vercel.app/addProduct", product, {
         headers: {
           authorization: `Bearer ${token}`,
         },

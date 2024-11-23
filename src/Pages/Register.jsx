@@ -25,19 +25,21 @@ const Register = () => {
     const userData = { email, role, status, wishlist };
 
     CreateUser(data.email, data.password).then(() => {
-      axios.post("http://localhost:5000/users", userData).then((res) => {
-        if (res.data.insertedId) {
-          console.log(res.data);
-          Swal.fire({
-            position: "center",
-            icon: "success",
-            title: "Registration Successful 😎",
-            showConfirmButton: false,
-            timer: 1500,
-          });
-          navigate("/");
-        }
-      });
+      axios
+        .post("https://quick-ponno-server.vercel.app/users", userData)
+        .then((res) => {
+          if (res.data.insertedId) {
+            console.log(res.data);
+            Swal.fire({
+              position: "center",
+              icon: "success",
+              title: "Registration Successful 😎",
+              showConfirmButton: false,
+              timer: 1500,
+            });
+            navigate("/");
+          }
+        });
     });
 
     console.log(userData);

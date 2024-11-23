@@ -11,7 +11,7 @@ const WishlistCard = ({ product, setLatestData, latestData }) => {
 
   const handleRemoveWishlist = async () => {
     await axios
-      .patch("http://localhost:5000/wishlist/remove", {
+      .patch("https://quick-ponno-server.vercel.app/wishlist/remove", {
         userEmail: userEmail,
         productId: product._id,
       })

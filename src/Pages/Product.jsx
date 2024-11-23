@@ -27,7 +27,7 @@ const Product = () => {
       setLoading(true);
       try {
         const response = await axios.get(
-          `http://localhost:5000/all-product?title=${search}&page=${page}&limit=${9}&sort=${sort}&brand=${brand}&category=${category}`
+          `https://quick-ponno-server.vercel.app/all-product?title=${search}&page=${page}&limit=${9}&sort=${sort}&brand=${brand}&category=${category}`
         );
         setProducts(response.data.products);
         setUniqueBrand(response.data.brands);
