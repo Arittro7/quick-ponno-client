@@ -8,7 +8,7 @@ const MyWishlist = () => {
 
   const [wishlist, setWishlist] = useState([])
   const userData = useUserData()
-
+  const [latestData, setLatestData] =useState()
   const token = localStorage.getItem('access-token')
 
   useEffect(() => {
@@ -22,7 +22,7 @@ const MyWishlist = () => {
       if(userData._id && token){
         fetchWishlist()
       }
-  },[token , userData._id])
+  },[token , userData._id, latestData])
 
   return (
     <div> 
@@ -33,6 +33,8 @@ const MyWishlist = () => {
           <WishlistCard
           key={product._id}
           product={product}
+          setLatestData={setLatestData}
+          latestData={latestData}
           ></WishlistCard>
           )
         ) : (

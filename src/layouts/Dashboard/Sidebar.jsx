@@ -29,10 +29,10 @@ const Sidebar = () => {
   // console.log(userData);
   const { Logout } = useAuth();
   return (
-    <div className="bg-emerald-400 border-r-2 border-green-800 min-h-screen">
+    <div className="bg-emerald-400 border-r-2 border-green-800 min-h-full ">
       
         <img
-        className="w-24 mx-auto " 
+        className="w-24 mx-auto pt-5 " 
         src={logo} alt="" />
         
       <ul className="flex flex-col gap-2 p-4">
