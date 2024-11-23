@@ -14,6 +14,8 @@ import AddProducts from "../Pages/Dashboard/Seller/AddProducts";
 import MyProducts from "../Pages/Dashboard/Seller/MyProducts";
 import BuyerRoute from "./Private/BuyerRoute";
 import MyWishlist from "../Pages/Dashboard/Buyer/MyWishlist";
+import AdminRoute from "./Private/AdminRoute";
+import AdminPanel from "../Pages/Dashboard/Admin/AdminPanel";
 
 export const router = createBrowserRouter([
   {
@@ -58,6 +60,15 @@ export const router = createBrowserRouter([
       {
         path: "/dashboard/overview",
         element: <Overview></Overview>,
+      },
+      // Admin Routes
+      {
+        path: "/dashboard/admin",
+        element: (
+          <AdminRoute>
+            <AdminPanel></AdminPanel>
+          </AdminRoute>
+        ),        
       },
       // Buyer Routes
       {

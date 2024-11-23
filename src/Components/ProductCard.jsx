@@ -57,24 +57,22 @@ const ProductCard = ({ product, isInWishlist }) => {
           </h1>
         </div>
         <div>
-        {isInWishlist ? (
-          <div className="btn btn-outline flex justify-center">
-            <button
-              className="uppercase font-semibold"
-            >
-              Remove From Wishlist
-            </button>
-          </div>
-        ) : (
-          <div className="btn btn-outline flex justify-center">
-            <button
-              onClick={handleWishlist}
-              className="uppercase font-semibold"
-            >
-              Add to Wishlist
-            </button>
-          </div>
-        )}
+          {isInWishlist ? (
+            <div className="btn btn-outline flex justify-center">
+              <button className="uppercase font-semibold">
+                Remove From Wishlist
+              </button>
+            </div>
+          ) : (
+            <div className="btn btn-outline flex justify-center">
+              <button
+                onClick={handleWishlist}
+                className="uppercase font-semibold"
+              >
+                Add to Wishlist
+              </button>
+            </div>
+          )}
         </div>
       </div>
     </div>
